@@ -1,0 +1,6 @@
+5.3.5f1:2.3.0.0
+StandaloneWindows
+G:/Program files i install/unity/Editor/Data/Managed/UnityEngine.dll
+G:/Program files i install/unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
+G:/Program files i install/unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
+G:/Program files i install/unity/Editor/Data/Managed/UnityEditor.dll
