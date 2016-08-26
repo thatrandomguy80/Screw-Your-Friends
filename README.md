@@ -1,6 +1,18 @@
 # Screw- Your- Friends
 unity game prototype in C#
 
+##How to Play
+Controls are A,D for left-right, W for jump and hold S for ground smash.
+Maps can be added by adding their UNCOMPRESSED PNG to maps folder and ENSURING their import setting match the test maps.
+Map code: change each pixels blue value to either of the following to get the corrisponding prefab
+- 0-Basic Tile
+- 25-end map gate
+- 50-Breakable tile
+- 100-Coin
+- 150-Spawner
+- 200-Check Point(for respawning)
+- 250-end map gate
+- 
 ##Basic concept
 Screw- Your- Friends is a 2D percision platformer designed to be multiplayer. Each player will race towards a goal and leading players can risk thier flow and speed to set off traps
 such as ground smashing to break the floor. This will cause that player to stumble but may increase their lead if used correctly.
