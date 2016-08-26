@@ -38,7 +38,6 @@ public class MapLoader : MonoBehaviour {
                 int item = 999;
                 if (tmp.a != 0) {
                     if (tmp.b == 0) item = (int)t.BASIC;
-                    else if (tmp.b == 25) item = (int)t.DEST;
                     else if (tmp.b == 50) item = (int)t.DEST;
                     else if (tmp.b == 100) item = (int)t.COIN;
                     else if (tmp.b == 150) item = (int)t.SPAWN;
