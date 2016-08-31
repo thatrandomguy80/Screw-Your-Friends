@@ -16,8 +16,11 @@ public class coin : MonoBehaviour {
         transform.Rotate(0, Rotspeed * Time.deltaTime, 0);
     }
 
-    public void OnTriggerEnter2D() {
-        GameObject.Find("Manager").SendMessage("addScore");
-        Destroy(this.gameObject);
+    public void OnTriggerEnter2D( Collider2D other) {
+        if (other.GetComponent<Movement>() != null)
+        {
+            GameObject.Find("Manager").SendMessage("addScore");
+            Destroy(this.gameObject);
+        }
     }
 }

@@ -58,7 +58,7 @@ public class DescPlat : MonoBehaviour {
             }
             int i = 0;
             foreach (DescPlat t in neighbours) {//call each fall with delays for middle and right
-                t.SendMessage("fallin", 1.2 * i);
+                t.SendMessage("fallin", 0.5f * i);
                 i++;
             }
         }

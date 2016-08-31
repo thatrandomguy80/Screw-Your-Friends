@@ -20,15 +20,16 @@ public class Movement : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.W) && isGrounded()) {
             jump();
         }
+
         if (Input.GetAxis("Horizontal") != 0) {
             mVector.x = Input.GetAxis("Horizontal");
             if (mVector.x > 0)
                 this.GetComponent<SpriteRenderer>().flipX = false;
             else if (mVector.x < 0)
                 this.GetComponent<SpriteRenderer>().flipX = true;
-                
             movement();
         }
+
         //about to hit ground with s held
         if (rBody.velocity.y <-0.5f && Input.GetKey(KeyCode.S) && Physics2D.Raycast(transform.position, -Vector3.up, distToGround + 0.2f, LayerMask.GetMask("ground"))) {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector3.up, distToGround + 0.2f, LayerMask.GetMask("ground"));
@@ -36,7 +37,6 @@ public class Movement : MonoBehaviour {
                 hit.transform.GetComponent<DescPlat>().breakPlat();
             }
         }
-
     }
 
     public void jump() {
