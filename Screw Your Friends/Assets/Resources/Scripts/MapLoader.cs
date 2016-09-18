@@ -55,11 +55,6 @@ public class MapLoader : MonoBehaviour
                     {
                         GameObject obj = Instantiate(tiles[item], new Vector3(x, y, 0), Quaternion.identity) as GameObject;
                         obj.transform.localScale = new Vector3(xScale, yScale, 1f);
-                        BoxCollider2D col = obj.GetComponent<BoxCollider2D>();
-                        if (col != null)
-                        {
-                            col.size = new Vector2(.99f, 1);
-                        }
                         if (item != (int)t.SPAWN)
                             obj.transform.SetParent(map.transform);
                     }

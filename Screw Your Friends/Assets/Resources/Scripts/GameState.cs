@@ -6,12 +6,14 @@ public class GameState : MonoBehaviour {
     int score;
     float DeathFloor;
     private Text scoreText;
+    private Text debugText;
     private spawner spawn;
     private MapLoader ML;
     private int level = 0;
     // Use this for initialization
     void Start() {
         scoreText = GameObject.Find("Text").GetComponent<Text>();
+        debugText = GameObject.Find("debugText").GetComponent<Text>();
         ML = this.transform.GetComponent<MapLoader>();
         Debug.Log("GameStart");
         nextMap();
@@ -23,6 +25,7 @@ public class GameState : MonoBehaviour {
             spawn = GameObject.Find("Spawner(Clone)").GetComponent<spawner>();
 
         scoreText.text = "Score: " + score;
+        debugText.text = "colliders: " + GameObject.Find("Character").GetComponent<Movement>().getColliders() +"\nVelocity"+ GameObject.Find("Character").GetComponent<Movement>().getVel();
     }
 
     public void MapDim(float ydim) {
