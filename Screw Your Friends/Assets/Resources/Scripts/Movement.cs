@@ -63,7 +63,7 @@ public class Movement : MonoBehaviour {
                 this.GetComponent<SpriteRenderer>().flipX = true;
             movement();
         } else if (rBody.velocity.magnitude > maxSpeed) {//bring player to a halt. If too fast then half speed until slow enough to freeze.
-            rBody.AddForce(-(rBody.velocity / 2));
+            rBody.AddForce(-(rBody.velocity / 4));
         } else {
             rBody.AddForce(-rBody.velocity);
         }
@@ -123,7 +123,7 @@ public class Movement : MonoBehaviour {
     }
 
     private bool isGrounded() {
-        float off =0f;
+        float off = 0f;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector3.up, distToGround + off, LayerMask.GetMask("ground"));
         RaycastHit2D hit1 = Physics2D.Raycast(transform.position, new Vector3(-0.5f, -0.5f, 0), distToGround + off, LayerMask.GetMask("ground"));
         RaycastHit2D hit2 = Physics2D.Raycast(transform.position, new Vector3(0.5f, -0.5f, 0), distToGround + off, LayerMask.GetMask("ground"));
@@ -140,18 +140,18 @@ public class Movement : MonoBehaviour {
         mVector.x = mVector.x * speed;
         rBody.AddForce(mVector);
         Vector2 vel = rBody.velocity, result = new Vector2(0, 0);
-        if ((!(rBody.velocity.x < maxSpeed / 2 && rBody.velocity.x > -(maxSpeed / 2))) && isGrounded())// if grounded and too fast then basic slow down.
+        if ((!(rBody.velocity.x < maxSpeed && rBody.velocity.x > -maxSpeed)) && isGrounded())// if grounded and too fast then basic slow down.
         {
             result = vel * -1;
-            result.Normalize();
-            rBody.AddForce(result * speed);
-        } else if ((!(rBody.velocity.magnitude < maxSpeed * 1.5f && rBody.velocity.magnitude > -maxSpeed * 1.5f)) && !isGrounded())// if in air restrict vertical movment
+            rBody.AddForce(result);
+            Debug.Log("Slow Dodn");
+        } else if ((rBody.velocity.x < -(maxSpeed) || rBody.velocity.x > maxSpeed) && !isGrounded())// if in air restrict vertical movment
           {
-            if (vel.x > maxSpeed) {
-                result.x = -(vel.x - maxSpeed);//slow down but don't stop player
+            if (vel.x > 0) {
+                result.x = -(maxSpeed - maxSpeed / 4);//slow down but don't stop player
             }
-            if (vel.x < -maxSpeed) {
-                result.x = -(vel.x + maxSpeed);//slow down but don't stop player
+            if (vel.x < 0) {
+                result.x = +(maxSpeed - maxSpeed / 4);//slow down but don't stop player
             }
             rBody.AddForce(result * speed);//add slowing force
         }

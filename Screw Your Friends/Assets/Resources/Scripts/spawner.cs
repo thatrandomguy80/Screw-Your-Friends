@@ -15,8 +15,9 @@ public class spawner : MonoBehaviour {
     }
     public void respawn() {
         Vector3 pos = transform.position;
-        pos.y += 1f;
+        pos.y += 1.5f;
         Char.transform.position = pos;
         rb.velocity = Vector3.zero;
+        rb.constraints = RigidbodyConstraints2D.None;
     }
 }
